@@ -1,0 +1,13 @@
+hoge = 'huga'
+
+foo = {
+  'bar': 'baz',
+}
+
+array = [1, 2, 'fizz']
+
+obj = {
+  'hoge': hoge,
+  'foo': foo,
+  'arr': array,
+}
