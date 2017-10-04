@@ -10,10 +10,31 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/google/skylark"
-	"encoding/json"
 	"bytes"
+	"encoding/json"
+
+	"github.com/google/skylark"
+	"github.com/kataras/go-errors"
+	"os"
 )
+
+func init() {
+	skylark.Universe["getenv"] = skylark.NewBuiltin("getnev", getenv)
+}
+
+func getenv(thread *skylark.Thread, fn *skylark.Builtin, args skylark.Tuple, kwargs []skylark.Tuple) (skylark.Value, error) {
+	if len(args) != 1 {
+		return skylark.None, errors.New("a lot of values")
+	}
+
+	key, ok := skylark.AsString(args[0])
+	if !ok {
+		return skylark.None, errors.New("not mathc type")
+	}
+
+	env := os.Getenv(key)
+	return skylark.String(env), nil
+}
 
 func main() {
 	thread := new(skylark.Thread)

@@ -11,3 +11,5 @@ obj = {
   'foo': foo,
   'arr': array,
 }
+
+env = getenv('AAA')
