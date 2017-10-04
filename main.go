@@ -16,6 +16,7 @@ func init() {
 	skylark.Universe["getenv"] = skylark.NewBuiltin("getnev", getenv)
 }
 
+// getenv function sample
 func getenv(thread *skylark.Thread, fn *skylark.Builtin, args skylark.Tuple, kwargs []skylark.Tuple) (skylark.Value, error) {
 	if len(args) != 1 {
 		return skylark.None, errors.New("a lot of values")
